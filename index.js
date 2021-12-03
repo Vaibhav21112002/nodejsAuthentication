@@ -1,6 +1,7 @@
 const express = require("express");
 const connectDB = require("./config/db");
 const authRouter = require("./routes/auth-router");
+const privateRouter = require("./routes/private-router");
 const errorHandler = require("./middleware/error");
 require("dotenv").config({ path: "./.env" });
 connectDB();
@@ -10,6 +11,7 @@ const app = express();
 app.use(express.json());
 
 app.use("/api/auth", authRouter);
+app.use("/api/private", privateRouter);
 
 // Error Handler Should Be Last Piece of Middleware
 app.use(errorHandler);
